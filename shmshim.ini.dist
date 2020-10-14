@@ -1,0 +1,42 @@
+; Configuration settings for shmshim.php
+; 
+
+[settings]
+serialization_strategy = json
+execute_at_startup = "minify templates/*"
+reload_interval = 60
+exec_enabled = false
+
+; For the `filter_files` option, you may specify one of `whitelist`,
+; `blacklist`, or `none`.  If filter files is `none`, no files in the specified
+; directories will be filtered from being loaded.  Otherwise, files with the
+; MIME types specified in the file_types[] options below will be included or
+; excluded from loaded files, depending on whether you specify `whitelist` or
+; `blacklist` respectively.
+filter_files = whitelist
+file_types[] = 'text/plain'
+file_types[] = 'text/markdown'
+file_types[] = 'text/html'
+file_types[] = 'text/css'
+file_types[] = 'text/csv'
+file_types[] = 'text/javascript'
+file_types[] = 'text/calendar'
+file_types[] = 'image/svg'
+file_types[] = 'image/svg+xml'
+file_types[] = 'application/xhtml'
+file_types[] = 'application/xhtml+xml'
+file_types[] = 'application/xml'
+file_types[] = 'text/xml'
+
+
+[data_load]
+
+; Files at or in the following paths will be loaded, except those filtered by
+; the `filter_files` and `file_types` directives given above.
+load_paths[] = templates
+load_paths[] = .
+
+;load_php[/path/to/script] = example.php
+
+load_exec[] = example_func
+
