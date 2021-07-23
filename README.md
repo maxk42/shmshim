@@ -22,6 +22,8 @@ Concatenate all data and return it without any further encoding.  This is a good
 #### simple
 The simple format is defined as follows:
 
+```text
+
 Type    Name        Description
 uint64  Length      The file begins with a header consisting of a single little-endian unsigned 64-bit integer which specifies how many records follow.
 uint8   NameLen     Each record begins with a one-byte unsigned integer specifying how long the record's Name is.  The Name is a unique key (up to 255 characters in length) which is used to identify the data record.
@@ -29,10 +31,14 @@ char *  Name        The name is a key uniquely identifying this record, which is
 uint64  DataLen     A little-endian 64-bit unsigned integer specifies the length of the data to follow.
 char *  Data        Finally, the data of a single record is stored in a series of raw bytes.
 
-```text
-One:    ABC
-Two:    DEF
-Three:  GHI
+
+Data to be serialized:
+
+  One:    ABC
+  Two:    DEF
+  Three:  GHI
+
+Hex dump of result, with letters below correlating to each part:
 
 03  00  00  00  00  00  00  00  03  4F  6E  65  03  00  00  00  00  00  00  00  41  42  43  03  54  77  6F  03  00  00  00  00  00  00  00  44  45  46  05  54  68  72  65  65  03  00  00  00  00  00  00  00  47  48  49
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  BB  CCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE  BB  CCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE  BB  CCCCCCCCCCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE
