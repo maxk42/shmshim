@@ -32,13 +32,13 @@ uint64  DataLen     A little-endian 64-bit unsigned integer specifies the length
 char *  Data        Finally, the data of a single record is stored in a series of raw bytes.
 
 
-Data to be serialized:
+Assume we're serializing an array with the following keys ('One', 'Two', and 'Three') and values ('ABC', 'DEF', and 'GHI'):
 
   One:    ABC
   Two:    DEF
   Three:  GHI
 
-Hex dump of result, with letters below correlating to each part:
+After serialization, the hex dump of the result would look like the following (with letters below the hex dump correlating to each part defined in the subsequent key):
 
 03  00  00  00  00  00  00  00  03  4F  6E  65  03  00  00  00  00  00  00  00  41  42  43  03  54  77  6F  03  00  00  00  00  00  00  00  44  45  46  05  54  68  72  65  65  03  00  00  00  00  00  00  00  47  48  49
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  BB  CCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE  BB  CCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE  BB  CCCCCCCCCCCCCCCCCC  DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD  EEEEEEEEEE
